@@ -39,7 +39,7 @@ class Grade extends StatelessWidget {
           children: [
             Center(
               child: CircleAvatar(
-                backgroundImage: AssetImage('assets/ari.jpg'),
+                backgroundImage: AssetImage('assets/꾸까꾸.gif'),
                 radius: 80.0,
               ),
             ),
@@ -60,7 +60,7 @@ class Grade extends StatelessWidget {
               height: 10.0,
             ),
 
-            Text('Ari',
+            Text('GGG',
             style: TextStyle(
               color: Colors.white,
               letterSpacing: 2.0,
@@ -72,7 +72,7 @@ class Grade extends StatelessWidget {
               height: 30.0,
             ),
 
-            Text('Ari Power LV',
+            Text('GGG Power LV',
             style: TextStyle(
               color: Colors.white,
               letterSpacing: 2.0,
@@ -83,7 +83,7 @@ class Grade extends StatelessWidget {
               height: 10.0,
             ),
 
-            Text('22',
+            Text('2',
             style: TextStyle(
               color: Colors.white,
               letterSpacing: 2.0,
@@ -100,7 +100,7 @@ class Grade extends StatelessWidget {
                 SizedBox(
                   width: 10.0,
                 ),
-                Text('폰 잠그기',
+                Text('약 먹기',
                 style: TextStyle(
                   fontSize: 16.0,
                   letterSpacing: 1.0
@@ -128,7 +128,7 @@ class Grade extends StatelessWidget {
                 SizedBox(
                   width: 10.0,
                 ),
-                Text('일찍 일어나기',
+                Text('좋아하는 일하기',
                 style: TextStyle(
                   fontSize: 16.0,
                   letterSpacing: 1.0
@@ -136,6 +136,13 @@ class Grade extends StatelessWidget {
                 ),
               ],
             ),
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/ggg.jpg'),
+                radius: 40.0,
+                backgroundColor: Colors.amber[800],
+              ),
+            )
           ],
         ),
       ),
