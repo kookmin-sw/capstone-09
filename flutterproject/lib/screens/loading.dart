@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterproject/data/my_location.dart' show MyLocation;
 import 'package:flutterproject/data/network.dart';
+import 'package:flutterproject/screens/weather_screen.dart';
 
 const apiKey = '0d0cc1131b44cd6ea0027e60e69dc007';
 
@@ -31,27 +32,20 @@ class _LoadingState extends State<Loading> {
     print(longitude3);
 
     Network network = Network('https://api.openweathermap.org/data/2.5/weather'
-        '?lat=$latitude3&lon=$longitude3&appid=$apiKey');
+        '?lat=$latitude3&lon=$longitude3&appid=$apiKey&units=metric');
 
     var weatherData = await network.getJsonData();
-    print(weatherData);    
+    print(weatherData);
+
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return WeatherScreen(parseWeatherData: weatherData,);
+    }));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: RaisedButton(
-          onPressed: null,
-          child: Text(
-            'Get my location',
-            style: TextStyle(
-              color: Colors.white
-            ),
-          ),
-          color: Colors.blue,
-        ),
-      ),
+      //위치 허용 권한을 받을 때 띄우고 싶은 위젯 위치
     );
   }
 }
