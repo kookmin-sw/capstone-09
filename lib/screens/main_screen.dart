@@ -1,6 +1,8 @@
+import 'package:capstone/screens/weather.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone/config/palette.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({Key? key}) : super(key: key);
@@ -10,6 +12,7 @@ class LoginSignupScreen extends StatefulWidget {
 }
 
 class _LoginSignupScreenState extends State<LoginSignupScreen> {
+  final _authentication = FirebaseAuth.instance; //사용자의 등록과 인증에 사용
   bool isSignupScreen = true;
   final _formKey = GlobalKey<FormState>(); //텍스트폼 validation
   String username = '';
@@ -112,9 +115,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             child: Column(
                               children: [
                                 Text(
-                                  'LOGIN',
+                                  '로그인',
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontFamily: "JUA",
+                                    fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                     color:!isSignupScreen ? Palette.activeColor : Palette.textColor1
                                   ),
@@ -138,9 +142,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             child: Column(
                               children: [
                                 Text(
-                                  'SIGNUP',
+                                  '회원가입',
                                   style: TextStyle(
-                                      fontSize: 16,
+                                      fontFamily: "JUA",
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                       color: isSignupScreen ? Palette.activeColor : Palette.textColor1
                                   ),
@@ -175,6 +180,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 onSaved: (value){
                                   username = value!;
                                 },
+                                onChanged: (value){
+                                  username = value;
+                                },
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(
                                     Icons.account_circle,
@@ -196,6 +204,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   ),
                                   hintText: 'User name',
                                   hintStyle: TextStyle(
+                                    fontFamily: "JUA",
                                     fontSize: 14,
                                     color: Palette.textColor1
                                   ),
@@ -206,6 +215,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 height: 8,
                               ),
                               TextFormField(
+                                keyboardType: TextInputType.emailAddress,
                                 key: ValueKey(2),
                                 validator: (value){
                                   if(value!.isEmpty || !value.contains('@')) {
@@ -215,6 +225,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 },
                                 onSaved: (value){
                                   useremail = value!;
+                                },
+                                onChanged: (value){
+                                  useremail = value;
                                 },
                                 decoration: InputDecoration(
                                     prefixIcon: Icon(
@@ -237,6 +250,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     ),
                                     hintText: 'Email',
                                     hintStyle: TextStyle(
+                                        fontFamily: "JUA",
                                         fontSize: 14,
                                         color: Palette.textColor1
                                     ),
@@ -247,6 +261,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 height: 8,
                               ),
                               TextFormField(
+                                obscureText: true, //password **** 표시
                                 key: ValueKey(3),
                                 validator: (value){
                                   if(value!.isEmpty || value.length < 6) {
@@ -256,6 +271,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 },
                                 onSaved: (value){
                                   userpassword = value!;
+                                },
+                                onChanged: (value){
+                                  userpassword = value;
                                 },
                                 decoration: InputDecoration(
                                     prefixIcon: Icon(
@@ -278,6 +296,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     ),
                                     hintText: 'Password',
                                     hintStyle: TextStyle(
+                                        fontFamily: "JUA",
                                         fontSize: 14,
                                         color: Palette.textColor1
                                     ),
@@ -306,6 +325,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 onSaved: (value){
                                   useremail = value!;
                                 },
+                                onChanged: (value){
+                                  useremail = value;
+                                },
                                 decoration: InputDecoration(
                                     prefixIcon: Icon(
                                       Icons.email,
@@ -327,6 +349,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     ),
                                     hintText: 'Email',
                                     hintStyle: TextStyle(
+                                        fontFamily: "JUA",
                                         fontSize: 14,
                                         color: Palette.textColor1
                                     ),
@@ -346,6 +369,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 },
                                 onSaved: (value){
                                   userpassword = value!;
+                                },
+                                onChanged: (value){
+                                  userpassword = value;
                                 },
                                 decoration: InputDecoration(
                                     prefixIcon: Icon(
@@ -368,6 +394,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     ),
                                     hintText: 'Password',
                                     hintStyle: TextStyle(
+                                        fontFamily: "JUA",
                                         fontSize: 14,
                                         color: Palette.textColor1
                                     ),
@@ -400,8 +427,52 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                     borderRadius: BorderRadius.circular(50)
                   ),
                   child: GestureDetector(
-                    onTap: (){
-                      _tryValidation();
+                    onTap: () async{
+                      if(isSignupScreen) {
+                        _tryValidation();
+                        try {
+                          final newuser = await _authentication.createUserWithEmailAndPassword(
+                            email: useremail,
+                            password: userpassword,
+                          );
+                          if(newuser.user != null){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context){
+                                return Weather();
+                              }),
+                            );
+                          }
+                        }catch(e) {
+                          print(e);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content:
+                                  Text('Please check your email and password'),
+                                backgroundColor: Color.fromARGB(255,146,168,209),
+                            ),
+                          );
+                        }
+                      }
+                      if(!isSignupScreen) { //login
+                        _tryValidation();
+                        try{
+                          final newuser = await _authentication.signInWithEmailAndPassword(
+                            email: useremail,
+                            password: userpassword,
+                          );
+                          if(newuser.user != null){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context){
+                                return Weather();
+                              }),
+                            );
+                          }
+                        }catch(e){
+                          print(e);
+                        }
+                      }
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -438,7 +509,13 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                 left: 0,
                 child: Column(
                   children: [
-                    Text(isSignupScreen ? 'or Signup with' : 'or Signin with'),
+                    Text(isSignupScreen ? 'or Signup with' : 'or Signin with',
+                    style: TextStyle(
+                      fontFamily: "JUA",
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal
+                    ),
+                    ),
                     SizedBox(
                       height: 10,
                     ),
@@ -453,7 +530,14 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                           backgroundColor: Palette.googleColor
                         ),
                         icon: Icon(Icons.add),
-                        label: Text('Google'),
+                        label: Text(
+                            '구글',
+                          style: TextStyle(
+                            fontFamily: "JUA",
+                            fontSize: 19,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
                     ),
                   ],
                 ),
