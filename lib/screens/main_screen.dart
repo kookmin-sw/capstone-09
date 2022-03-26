@@ -3,12 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone/config/palette.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:capstone/screens/googlesign.dart';
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({Key? key}) : super(key: key);
 
   @override
   _LoginSignupScreenState createState() => _LoginSignupScreenState();
+
 }
 
 class _LoginSignupScreenState extends State<LoginSignupScreen> {
@@ -27,6 +29,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    //FirebaseAuth.instance.authStateChanges();
     return Scaffold(
       backgroundColor: Palette.backgroudColor,
       body: GestureDetector(
@@ -520,7 +523,17 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                       height: 10,
                     ),
                     TextButton.icon(
-                        onPressed: (){},
+                        onPressed: (){
+                          signInWithGoogle().whenComplete(() {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return Weather();
+                                },
+                              ),
+                            );
+                          });
+                        },
                         style: TextButton.styleFrom(
                           primary: Colors.white,
                           minimumSize: Size(155,40),
