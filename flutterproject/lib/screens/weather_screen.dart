@@ -81,7 +81,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
         leading: IconButton(
           //앱바의 왼쪽 아이콘
-          icon: Icon(Icons.menu),
+          icon: Icon(Icons.settings),
           onPressed: () {},
           iconSize: 30.0,
         ),
@@ -97,7 +97,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
         // ],
       ),
       body: Container(
-        color: Color.fromARGB(255, 146, 168, 209),
+        // color: Color.fromARGB(255, 146, 168, 209),
+        color: Colors.white,
         child: Stack(
           children: [
             // Image.asset(
@@ -125,11 +126,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               style: GoogleFonts.lato(
                                 fontSize: 25.0,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             ),
                             SizedBox(
-                              height: 200.0,
+                              height: 150.0,
                             ),
                             Row(
                               children: [
@@ -140,16 +141,16 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                     return Text(
                                       '${getSystemTime()}',
                                       style: GoogleFonts.lato(
-                                          fontSize: 14.0, color: Colors.white),
+                                          fontSize: 14.0, color: Colors.black),
                                     );
                                   },
                                 ),
                                 Text(DateFormat(' - EEEE, ').format(date),
                                     style: GoogleFonts.lato(
-                                        fontSize: 14.0, color: Colors.white)),
+                                        fontSize: 14.0, color: Colors.black)),
                                 Text(DateFormat('d MMM, yyy').format(date),
                                     style: GoogleFonts.lato(
-                                        fontSize: 14.0, color: Colors.white))
+                                        fontSize: 14.0, color: Colors.black))
                               ],
                             )
                           ],
@@ -165,7 +166,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                   style: GoogleFonts.lato(
                                       fontSize: 100.0,
                                       fontWeight: FontWeight.w300,
-                                      color: Colors.white),
+                                      color: Colors.black),
                                 ),
 
                                 SizedBox(
@@ -181,7 +182,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           '$des',
                                           style: GoogleFonts.lato(
                                               fontSize: 20.0,
-                                              color: Colors.white),
+                                              color: Colors.black),
                                         )
                                       ],
                                     ),
@@ -194,7 +195,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           'AQI(대기질지수)',
                                           style: GoogleFonts.lato(
                                             fontSize: 14.0,
-                                            color: Colors.white,
+                                            color: Colors.black,
                                           ),
                                         ),
                                         SizedBox(
@@ -218,7 +219,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           '미세먼지',
                                           style: GoogleFonts.lato(
                                             fontSize: 14.0,
-                                            color: Colors.white,
+                                            color: Colors.black,
                                           ),
                                         ),
                                         SizedBox(
@@ -228,7 +229,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           '$finedust',
                                           style: GoogleFonts.lato(
                                             fontSize: 24.0,
-                                            color: Colors.white,
+                                            color: Colors.black,
                                           ),
                                         ),
                                         SizedBox(
@@ -238,7 +239,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           '㎍/m3',
                                           style: GoogleFonts.lato(
                                               fontSize: 14.0,
-                                              color: Colors.white,
+                                              color: Colors.black,
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ],
@@ -254,7 +255,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           '초미세먼지',
                                           style: GoogleFonts.lato(
                                             fontSize: 14.0,
-                                            color: Colors.white,
+                                            color: Colors.black,
                                           ),
                                         ),
                                         SizedBox(
@@ -264,7 +265,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           '$ultrafinedust',
                                           style: GoogleFonts.lato(
                                             fontSize: 24.0,
-                                            color: Colors.white,
+                                            color: Colors.black,
                                           ),
                                         ),
                                         SizedBox(
@@ -274,7 +275,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           '㎍/m3',
                                           style: GoogleFonts.lato(
                                               fontSize: 14.0,
-                                              color: Colors.white,
+                                              color: Colors.black,
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ],
@@ -298,7 +299,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               icon: Icon(
                                 Icons.accessibility,
                                 size: 40,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                               style: TextButton.styleFrom(
                                 primary: Colors.cyan,
