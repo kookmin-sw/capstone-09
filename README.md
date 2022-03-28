@@ -1,6 +1,6 @@
 # FlutterStudy
 
-### Flutter와 Dart를 독학하면서 만들게되는 코드를 보관하는 장소
+### Flutter와 Dart를 독학하면서 만들게되는 코드를 보관하는 장소 and 플러터를 이용한 프로젝트
 
 
 #### flutterfirsttest.dart
