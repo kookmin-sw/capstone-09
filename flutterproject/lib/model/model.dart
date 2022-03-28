@@ -21,6 +21,8 @@ class Model {
       return SvgPicture.asset(
         'svg/climacon-sun.svg',
         color: Colors.black87,
+        width: 70.0,
+        height: 68.0,
       );
     } else if (condition > 800) {
       return SvgPicture.asset(

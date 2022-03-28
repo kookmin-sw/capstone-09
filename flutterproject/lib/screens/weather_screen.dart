@@ -79,12 +79,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
         backgroundColor: Colors.blue,
         elevation: 0.0,
 
-        leading: IconButton(
-          //앱바의 왼쪽 아이콘
-          icon: Icon(Icons.settings),
-          onPressed: () {},
-          iconSize: 30.0,
-        ),
+        // leading: IconButton(
+        //   //앱바의 왼쪽 아이콘
+        //   icon: Icon(Icons.settings),
+        //   onPressed: () {
+
+        //   },
+        //   iconSize: 30.0,
+        // ),
 
         // actions: [ //앱바의 오른쪽 아이콘
         //   IconButton(
@@ -96,8 +98,34 @@ class _WeatherScreenState extends State<WeatherScreen> {
         //     )
         // ],
       ),
+      drawer: Drawer(
+        backgroundColor: Color.fromARGB(255, 140, 217, 255),
+          child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          UserAccountsDrawerHeader(
+              accountName: Text("여기에 이름 혹은 아이디"),
+              accountEmail: Text("여기에 이메일"),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40.0),
+                  bottomRight: Radius.circular(40.0)
+                )
+              ),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings,
+                color: Colors.white,
+                ),
+                title: Text('Setting'),
+                onTap: (){},
+              )
+        ],
+      )
+      ),
       body: Container(
-        // color: Color.fromARGB(255, 146, 168, 209),
+        // color: Color.fromARGB(255, 146, 168, 209), //정확한 색깔을 지정할 때 쓰는 코드
         color: Colors.white,
         child: Stack(
           children: [
@@ -164,15 +192,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 Text(
                                   '$temp\u2103', //디버그 할 때--web-renderer=html 옵션을 주어야한다
                                   style: GoogleFonts.lato(
-                                      fontSize: 100.0,
+                                      fontSize: 80.0,
                                       fontWeight: FontWeight.w300,
                                       color: Colors.black),
                                 ),
-
                                 SizedBox(
                                   height: 20.0,
                                 ),
-
                                 Row(
                                   children: [
                                     Column(
@@ -208,11 +234,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                         airState
                                       ],
                                     ),
-
                                     SizedBox(
                                       width: 10.0,
                                     ),
-
                                     Column(
                                       children: [
                                         Text(
@@ -244,11 +268,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                         ),
                                       ],
                                     ),
-
                                     SizedBox(
                                       width: 10.0,
                                     ),
-
                                     Column(
                                       children: [
                                         Text(
@@ -318,9 +340,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Icon(
-                        Icons.book,
-                        size: 80.0,)
+                      IconButton(
+                        icon: Icon(Icons.book),
+                        iconSize: 40.0,
+                        onPressed: (){},
+                      )
                     ],
                   )
 
