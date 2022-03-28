@@ -1,6 +1,8 @@
 # FlutterStudy
 
-### Flutter와 Dart를 독학하면서 만들게되는 코드를 보관하는 장소 and 플러터를 이용한 프로젝트
+## 캡스톤 코드와 자료는 FlutterProject
+
+### 캡스톤을 위한 Flutter와 Dart를 독학하면서 만들게되는 코드 보관
 
 
 #### flutterfirsttest.dart
