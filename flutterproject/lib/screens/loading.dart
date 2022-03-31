@@ -42,6 +42,8 @@ class _LoadingState extends State<Loading> {
     var airData = await network.getAirData();
     print(airData);
 
+    Navigator.pop(context);
+
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return WeatherScreen(
         parseWeatherData: weatherData,
@@ -53,6 +55,11 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Center(
+        child: IconButton(
+          icon: Icon(Icons.sunny),
+          onPressed: (){getLocation();},
+        )),
         //위치 허용 권한을 받을 때 띄우고 싶은 위젯 위치
         );
   }

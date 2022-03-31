@@ -22,6 +22,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   Widget icon;
   String des;
+  Widget charactericon;
   Model model = Model();
 
   Widget airIcon;
@@ -53,6 +54,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
     icon = model.getWeatherIcon(condition);
     des = weatherData['weather'][0]['description'];
+    charactericon = model.getcharacterIcon(condition);
 
     airIcon = model.getAirIcon(index);
     airState = model.getAirCondition(index);
@@ -99,34 +101,34 @@ class _WeatherScreenState extends State<WeatherScreen> {
         // ],
       ),
       drawer: Drawer(
-        backgroundColor: Color.fromARGB(255, 140, 217, 255),
+          backgroundColor: Color.fromARGB(255, 140, 217, 255),
           child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          UserAccountsDrawerHeader(
-              accountName: Text("여기에 이름 혹은 아이디"),
-              accountEmail: Text("여기에 이메일"),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(40.0),
-                  bottomRight: Radius.circular(40.0)
-                )
-              ),
+            padding: EdgeInsets.zero,
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text("여기에 이름 혹은 아이디"),
+                accountEmail: Text("여기에 이메일"),
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(40.0),
+                        bottomRight: Radius.circular(40.0)
+                    )
+                ),
               ),
               ListTile(
-                leading: Icon(Icons.settings,
-                color: Colors.white,
+                leading: Icon(
+                  Icons.settings,
+                  color: Colors.white,
                 ),
                 title: Text('Setting'),
-                onTap: (){},
+                onTap: () {},
               )
-        ],
-      )
-      ),
+            ],
+          )),
       body: Container(
         // color: Color.fromARGB(255, 146, 168, 209), //정확한 색깔을 지정할 때 쓰는 코드
-        color: Colors.white,
+        color: Color.fromARGB(255, 86, 187, 241),
         child: Stack(
           children: [
             // Image.asset(
@@ -158,7 +160,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               ),
                             ),
                             SizedBox(
-                              height: 150.0,
+                              height: 200.0,
                             ),
                             Row(
                               children: [
@@ -310,6 +312,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          children: [charactericon],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             ElevatedButton.icon(
                               onPressed: () {},
@@ -343,7 +349,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       IconButton(
                         icon: Icon(Icons.book),
                         iconSize: 40.0,
-                        onPressed: (){},
+                        onPressed: () {},
                       )
                     ],
                   )
