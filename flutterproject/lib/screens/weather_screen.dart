@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:timer_builder/timer_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:flutterproject/model/model.dart';
+import 'package:flutterproject/screens/settings.dart';
 
 class WeatherScreen extends StatefulWidget {
   WeatherScreen({this.parseWeatherData, this.parseAirpollution});
@@ -78,7 +79,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
       appBar: AppBar(
         title: Text('내옷골라도'),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: Color.fromARGB(255, 86, 187, 241),
         elevation: 0.0,
 
         // leading: IconButton(
@@ -101,7 +102,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
         // ],
       ),
       drawer: Drawer(
-          backgroundColor: Color.fromARGB(255, 140, 217, 255),
+          backgroundColor: Colors.white,
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -119,16 +120,32 @@ class _WeatherScreenState extends State<WeatherScreen> {
               ListTile(
                 leading: Icon(
                   Icons.settings,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 title: Text('Setting'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, '/settings');
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.question_answer,
+                  color: Colors.black,
+                ),
+                title: Text('Q&A'),                
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.check_box,
+                  color: Colors.black,
+                ),
+                title: Text('리뷰쓰러 가기'),
               )
             ],
           )),
       body: Container(
         // color: Color.fromARGB(255, 146, 168, 209), //정확한 색깔을 지정할 때 쓰는 코드
-        color: Color.fromARGB(255, 86, 187, 241),
+        color: Colors.white,
         child: Stack(
           children: [
             // Image.asset(

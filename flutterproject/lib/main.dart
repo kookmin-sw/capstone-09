@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterproject/screens/loading.dart';
+import 'package:flutterproject/screens/settings.dart';
 
 void main() {
   //main함수가 작동하면 MyApp을 불러옴
@@ -16,7 +17,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue
       ),
       //MyApp이 실행되면서 Loading을 실행시킴
-      home: Loading(),
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => Loading(),
+        '/settings' :(context) => settings()
+      },
     );
   }
 }
