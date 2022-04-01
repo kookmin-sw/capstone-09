@@ -65,7 +65,7 @@ flutter:
   assets:
     - image/mococo1.JPG
     - image/rabbit.png
-    - image/choosemain.png
+    - image/logo.png
   fonts:
     - family: JUA
       fonts:
