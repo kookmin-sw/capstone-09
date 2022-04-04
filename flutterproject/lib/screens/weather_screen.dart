@@ -7,6 +7,7 @@ import 'package:timer_builder/timer_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:flutterproject/model/model.dart';
 import 'package:flutterproject/screens/settings.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class WeatherScreen extends StatefulWidget {
   WeatherScreen({this.parseWeatherData, this.parseAirpollution});
@@ -18,6 +19,9 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
+  final _authentication = FirebaseAuth.instance;
+  User? loggedUser;
+
   String? cityName;
   int? temp;
 
@@ -37,8 +41,22 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   void initState() {
     // TODO: implement initState
+    getCurrentUser();
     super.initState();
     updateData(widget.parseWeatherData, widget.parseAirpollution);
+  }
+
+  void getCurrentUser() { //새로운 유저 등록이 성공적이라면
+    try{
+      final user = _authentication.currentUser;
+      if(user != null) {
+        loggedUser = user;
+        print(loggedUser!.email);
+      }
+    }catch(e) {
+      print(e);
+    }
+
   }
 
   void updateData(dynamic weatherData, dynamic airData) {
@@ -335,7 +353,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             ElevatedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                              },
                               label: Text(
                                 ' 뭐 입지? ',
                                 style: GoogleFonts.lato(
