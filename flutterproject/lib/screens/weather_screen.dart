@@ -18,19 +18,19 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  String cityName;
-  int temp;
+  String? cityName;
+  int? temp;
 
-  Widget icon;
-  String des;
-  Widget charactericon;
+  late Widget icon;
+  String? des;
+  late Widget charactericon;
   Model model = Model();
 
-  Widget airIcon;
-  Widget airState;
+  late Widget airIcon;
+  late Widget airState;
 
-  double finedust;
-  double ultrafinedust;
+  double? finedust;
+  double? ultrafinedust;
 
   var date = DateTime.now();
 
@@ -46,19 +46,19 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
     int condition = weatherData['weather'][0]['id'];
 
-    int index = airData['list'][0]['main']['aqi'];
+    int? index = airData['list'][0]['main']['aqi'];
 
     temp = temp2.toInt();
     // temp2.round();를 사용하면 소수점 첫째자리에서 반올림 가능
 
     cityName = weatherData['name'];
 
-    icon = model.getWeatherIcon(condition);
+    icon = model.getWeatherIcon(condition)!;
     des = weatherData['weather'][0]['description'];
     charactericon = model.getcharacterIcon(condition);
 
-    airIcon = model.getAirIcon(index);
-    airState = model.getAirCondition(index);
+    airIcon = model.getAirIcon(index)!;
+    airState = model.getAirCondition(index)!;
 
     finedust = airData['list'][0]['components']['pm10'];
     ultrafinedust = airData['list'][0]['components']['pm2_5'];

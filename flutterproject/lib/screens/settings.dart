@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class settings extends StatefulWidget {
-  const settings({Key key}) : super(key: key);
+  const settings({Key? key}) : super(key: key);
 
   @override
   State<settings> createState() => _settingsState();

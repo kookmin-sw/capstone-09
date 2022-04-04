@@ -2,8 +2,8 @@ import 'package:geolocator/geolocator.dart';
 
 
 class MyLocation{
-  double latitude2;
-  double longitude2;
+  double? latitude2;
+  double? longitude2;
   
   //Future를 사용하여 await를 통해 답이 오는 것을 기다림
   Future<void> getMyCurrentLocation() async{

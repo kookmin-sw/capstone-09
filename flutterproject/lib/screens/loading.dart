@@ -11,8 +11,8 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
-  double latitude3;
-  double longitude3;
+  double? latitude3;
+  double? longitude3;
 
   @override
   void initState() {

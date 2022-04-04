@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 
 class Model {
-  Widget getWeatherIcon(int condition) {
+  Widget? getWeatherIcon(int condition) {
     if (condition < 300) {
       return Image.asset('assets/rain.png',
       width: 64.0,
@@ -52,7 +52,7 @@ class Model {
 
   
 
-  Widget getAirIcon(int index){
+  Widget? getAirIcon(int? index){
     if( index == 1 ){
       return Image.asset('image/good.png',
       width: 37.0,
@@ -86,7 +86,7 @@ class Model {
 
   }
 
-  Widget getAirCondition(int index) {
+  Widget? getAirCondition(int? index) {
     if (index == 1) {
       return Text(
         '"매우좋음"',
