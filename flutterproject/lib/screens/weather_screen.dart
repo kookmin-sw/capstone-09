@@ -385,7 +385,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       IconButton(
                         icon: Icon(Icons.book),
                         iconSize: 40.0,
-                        onPressed: () {},
+                        onPressed: () {Navigator.pushNamed(context, '/note');},
                       )
                     ],
                   )

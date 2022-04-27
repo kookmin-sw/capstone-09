@@ -4,6 +4,7 @@ import 'package:flutterproject/screens/settings.dart';
 import 'package:flutterproject/screens/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutterproject/screens/weather.dart';
+import 'package:flutterproject/screens/note.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/' : (context) => LoginSignupScreen(),
         '/settings' :(context) => settings(),
         '/tt' :(context) => Loading(),
+        '/note':(context) => note()
       },
     );
   }
