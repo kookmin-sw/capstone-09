@@ -1,4 +1,4 @@
-import 'package:capstone/screens/weather.dart';
+import 'package:capstone/screens/weather_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone/config/palette.dart';
@@ -442,7 +442,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context){
-                                return Weather();
+                                return WeatherScreen();
                               }),
                             );
                           }
@@ -468,7 +468,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context){
-                                return Weather();
+                                return WeatherScreen();
                               }),
                             );
                           }
@@ -528,7 +528,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return Weather();
+                                  return WeatherScreen();
                                 },
                               ),
                             );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:capstone/screens/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:capstone/screens/loading.dart';
+import 'package:capstone/screens/settings.dart';
 
 
 void main() async {
@@ -16,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Catting app',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue
       ),
