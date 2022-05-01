@@ -353,7 +353,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             ElevatedButton.icon(
-                              onPressed: () {
+                              onPressed: () {Navigator.pushNamed(context, '/tt2');
                               },
                               label: Text(
                                 ' 뭐 입지? ',
