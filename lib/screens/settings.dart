@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,7 +18,10 @@ class _settingsState extends State<settings> {
     super.initState();
     //생성되면서 getLocation을 실행함
   }
-
+  void logout() async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushNamed(context, '/');
+  }
   void getcondition(int coh) {
     if (coh == -1) {
       condition = "나는 추위를 타는 편이에요";
@@ -88,7 +92,15 @@ class _settingsState extends State<settings> {
                               coldorhot = 1;
                               getcondition(coldorhot);
                             },
-                            icon: Icon(Icons.plus_one))
+                            icon: Icon(Icons.plus_one)),IconButton(
+                            icon: Icon(Icons.close),
+                            onPressed: () {
+                              // _auth.signOut();
+                              // Navigator.pop(context);
+                              logout();
+                              //   getMessages();
+                              //Implement logout functionality
+                            }),
                       ],
                     ),
                   ],

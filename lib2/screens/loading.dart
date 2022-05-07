@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterproject/data/my_location.dart' show MyLocation;
 import 'package:flutterproject/data/network.dart';
 import 'package:flutterproject/screens/weather_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 const apiKey = '0d0cc1131b44cd6ea0027e60e69dc007';
 

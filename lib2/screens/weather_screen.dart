@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterproject/ex/not_loading_recommend.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timer_builder/timer_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:flutterproject/model/model.dart';
@@ -46,6 +47,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
     getCurrentUser();
     super.initState();
     updateData(widget.parseWeatherData, widget.parseAirpollution);
+    sharedData(widget.parseWeatherData, widget.parseAirpollution);
   }
 
   void getCurrentUser() {
@@ -85,6 +87,25 @@ class _WeatherScreenState extends State<WeatherScreen> {
     print(cityName);
     print(condition);
     print(temp);
+  }
+
+  Future<void> sharedData(dynamic airData, dynamic weatherData) async {
+    double temp4 = weatherData['main']['temp'].toDouble();
+    int condition = weatherData['weather'][0]['id'];
+    int? index = airData['list'][0]['main']['aqi'];
+
+    int ?temp3 = temp4.toInt();
+    // temp2.round();를 사용하면 소수점 첫째자리에서 반올림 가능
+    String? cityName2 = weatherData['name'];
+    String? des2 = weatherData['weather'][0]['description'];
+    String? finedust2 = finedust as String;
+    String? ultrafinedust2 = ultrafinedust as String;
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setInt("temp", temp3);
+    prefs.setString("cityname", cityName2!);
+    prefs.setString("des", des2!);
+    prefs.setInt("condition", condition);
+    prefs.setInt("index", index!);
   }
 
   String getSystemTime() {
