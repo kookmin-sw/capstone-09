@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 class Model {
   Widget? getWeatherIcon(int condition) {
-    if (condition < 300) {
+    if (condition < 532) {
       return Image.asset('assets/rain.png',
       width: 64.0,
       height: 60.0,
       );
-    } else if (condition < 600) {
+    } else if (condition <= 622) {
       return Image.asset('assets/snow.png',
       width: 64.0,
       height: 60.0,
@@ -38,14 +38,14 @@ class Model {
    Widget getcharacterIcon(int condition) {
     if (condition < 300) {
       return Image.asset('assets/sum.png',
-      width: 64.0,
-      height: 60.0,
+      width: 200.0,
+      height: 100.0,
       );
     }
     else{
       return Image.asset('assets/sum.png', //gif도 가능
-      width: 200.0,
-      height: 100.0,
+      width: 300.0,
+      height: 200.0,
       );
     }
    }

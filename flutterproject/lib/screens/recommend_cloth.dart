@@ -26,7 +26,7 @@ class _RecommendClothState extends State<RecommendCloth> {
   }
 
   void updateData(dynamic weatherData) {
-    double temp2 = weatherData['main']['temp'];
+    double temp2 = weatherData['main']['temp'].toDouble();
     temp = temp2.toInt();
     cityName = weatherData['name'];
     int condition = weatherData['weather'][0]['id'];
