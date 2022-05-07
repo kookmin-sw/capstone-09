@@ -10,3 +10,12 @@
 5. 또한 api를 한 번만 불러오게 바꿔서 screen 폴더 내의 loading2.dart와 recommend_cloth.dart같은 경우 추후에 삭제 예정
 6. 새로은 옷 추천 코드는 ex폴더 내의 not_loading_recommend.dart에 있다.
 7. 또한 weather_screen.dart와 not_loading_reommend.dart의 의존이 강화됨 이점 유의 바람
+
+# 22-05-08 ver2
+* 0411 폴더 삭제
+* 로그인 유지기능 로그아웃 기능 구현
+* 하지만 잘 되는지는 장담 불가 일단 내 애뮬에선 잘됨
+
+1. main.dart에 코드 추가해서 로그인 유지되게 함
+2. setting.dart에 버튼 추가해서 로그아웃 되게 했음 setting에서 4개 중 한 개의 버튼은 로그아웃임
+3. 일단 로그인, 회원가입 잘 되는 것은 확인
