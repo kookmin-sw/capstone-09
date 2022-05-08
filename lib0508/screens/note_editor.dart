@@ -2,10 +2,9 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterproject/config/palette.dart';
+import 'package:flutterproject/data/DBHelper.dart';
+import 'package:flutterproject/model/memo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../data/DBHelper.dart';
-import '../model/memo.dart';
 
 class NoteEditorScreen extends StatefulWidget {
   NoteEditorScreen({Key? key}) : super(key: key);
@@ -80,12 +79,18 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
             Navigator.pop(context);
           }).catchError(
               (error) => print("Failed to add new Note due to error"));
-          final note =Note(
+          final prefs = await SharedPreferences.getInstance();
+          var id1 = prefs.getInt('counter') ?? 0;
+          id1 = id1 + 1;
+          DBHelper dbHelper = DBHelper();
+          dbHelper.insertMemo(Memo(
+            id: id1,
             title: _titleController.text,
-            description: _mainController.text,
-            createdTime: DateTime.now(),
-          );
-          await NotesDatabase.instance.create(note);
+            text: _mainController.text,
+            createTime: date,
+          ));
+          prefs.setInt('counter', id1);
+          print(dbHelper.database);
         },
         child: Icon(Icons.save),
       ),

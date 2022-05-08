@@ -19,3 +19,19 @@
 1. main.dart에 코드 추가해서 로그인 유지되게 함
 2. setting.dart에 버튼 추가해서 로그아웃 되게 했음 setting에서 4개 중 한 개의 버튼은 로그아웃임
 3. 일단 로그인, 회원가입 잘 되는 것은 확인
+
+# 22-05-09
+* sqlfite 활용해서 개인 메모 부분 구현.
+* not_loading_recommend.dart위치를 이동함 ex -> screen
+* loading2.dart와 cloth_recommend.dart의 경우 주석으로 비활성화 처리함 차후 삭제 예정
+
+1. 개인 메모 파트는 [링크](https://github.com/JohannesMilke/sqflite_database_example/blob/master/lib/page/edit_note_page.dart) 이 분 영상과 코드를 참고해서 만들었다. 그래서 어느 정도 다듬어야 한다.
+2. 아이콘 깨지는 문제는 인터넷 찾아보면서 이것저것 해보았는데 다 안된다. 왜이러는지 모르겠다.
+3. 다른 기능들은 애뮬에서 어플을 지우고 다시 설치해서 해 보았는데 잘 된다.
+4.<br>
+**model: memo.dart**<br>
+**screen: personal_note_personal.dart, add_note.dart personal_note_reader.dart**<br>
+**widget: note_form.dart, noteCardPersonal.dart**<br>
+**data: DBHelper.dart**<br>
+add_note.dart의 경우에도 삭제 예정<br>
+5. 며칠 동안 db구현하면서 계속 닫히는 문제가 발생 최대한 보편적인 틀에 맞추어서 하려고 하였으나, 계속 문제가 발생해서 db닫는 코드를 지웠다.
