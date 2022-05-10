@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutterproject/screens/loading.dart';
+import 'package:flutterproject/screens/not_loading_recommend.dart';
 import 'package:flutterproject/screens/settings.dart';
 import 'package:flutterproject/screens/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutterproject/screens/weather.dart';
-import 'package:flutterproject/screens/loading2.dart';
-import 'package:flutterproject/screens/recommend_cloth.dart';
 import 'package:flutterproject/screens/weather_screen.dart';
 import 'package:flutterproject/screens/note_personal.dart';
+import 'package:flutterproject/screens/personal_note_personal.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,15 +28,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue
       ),
       //MyApp이 실행되면서 Loading을 실행시킴
-      initialRoute: '/tt',
+      initialRoute: '/',
       routes: {
         '/' : (context) => LoginSignupScreen(),
         '/settings' :(context) => settings(),
         '/tt' :(context) => Loading(),
-        '/cloth': (context) => RecommendCloth(),
+        
         '/weather':(context)=> WeatherScreen(),
-        '/tt2': (context) => Loading2(),
-        '/note_personal': (context) => NotePersonal()
+        
+        '/note_personal': (context) => NotePersonal(),
+        '/notloading' :(context) => NotLoadingRecommend(),
+        '/personal_note_personal': (context) => NotesPage(),
       },
     );
   }
