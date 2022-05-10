@@ -66,6 +66,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
     int? index = airData['list'][0]['main']['aqi'];
 
+    int month = int.parse(DateFormat('MM').format(date));
+
     temp = temp2.toInt();
     // temp2.round();를 사용하면 소수점 첫째자리에서 반올림 가능
 
@@ -73,7 +75,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
     icon = model.getWeatherIcon(condition)!;
     des = weatherData['weather'][0]['description'];
-    charactericon = model.getcharacterIcon(condition);
+    charactericon = model.getcharacterIcon(month , condition);
 
     airIcon = model.getAirIcon(index)!;
     airState = model.getAirCondition(index)!;
